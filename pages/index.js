@@ -1,9 +1,32 @@
 import Head from "next/head";
+import Image from "next/image";
 
 export default function Home({ posts }) {
-  console.log(posts);
   return (
-    <div className="mx-auto w-1/2">
+    <div className="relative z-30 h-screen w-full bg-gray-900">
+      <div className="flex flex-col justify-center absolute inset-0 z-50 text-gray-50">
+        <div className="flex flex-col flex-grow-0 p-10 bg-black bg-opacity-30">
+          <h1 className="text-9xl font-playfair font-bold">
+            Deli <span className="text-yellow-400 font-playfair">delights</span>
+          </h1>
+          <h2 className="text-6xl font-playfair font-semibold mt-3">
+            for the whole family
+          </h2>
+          <h3 className="mt-10 text-xl tracking-wide text-gray-200">
+            Visit us at downtown Sundsvall for your next culinary delight!
+          </h3>
+        </div>
+      </div>
+
+      <Image
+        src="/../public/header-background.jpg"
+        layout="fill"
+        className="relative object-cover z-40 object-left transform scale-125 filter contrast-125"
+      />
+    </div>
+  );
+  {
+    /* <div className="mx-auto w-1/2">
       {posts.length > 0 ? (
         <div>
           {posts.map((post) => {
@@ -13,8 +36,11 @@ export default function Home({ posts }) {
       ) : (
         <h1>No posts were found</h1>
       )}
-    </div>
-  );
+      <a href="https://www.freepik.com/photos/food">
+        Food photo created by timolina - www.freepik.com
+      </a>
+    </div>) */
+  }
 }
 
 export const getStaticProps = async (context) => {
