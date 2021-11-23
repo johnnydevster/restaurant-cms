@@ -8,13 +8,13 @@ export default function Nav() {
         <Image src="/../public/logo.png" width={50} height={50} />
 
         <ul className="font-semibold mx-auto w-60 flex justify-between items-center uppercase">
-          <li className="hover:text-gray-600 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
+          <li className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
             Home
           </li>
-          <li className="hover:text-gray-600 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
+          <li className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
             About
           </li>
-          <li className="hover:text-gray-600 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
+          <li className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
             Menu
           </li>
         </ul>
