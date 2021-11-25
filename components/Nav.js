@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Nav() {
+export default function Nav({ setShowModal, setShowMenu }) {
+  function handleMenu() {
+    setShowModal(true);
+    setShowMenu(true);
+  }
   return (
     <>
       <nav className="tracking-widest items-center flex w-full fixed z-50 bg-gray-50 p-2 rounded-b">
@@ -14,7 +18,10 @@ export default function Nav() {
           <li className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
             About
           </li>
-          <li className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
+          <li
+            onClick={() => handleMenu()}
+            className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500"
+          >
             Menu
           </li>
         </ul>

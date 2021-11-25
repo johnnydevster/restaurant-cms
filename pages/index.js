@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Menu from "../components/Menu";
+import Layout from "../components/Layout";
 
 export default function Home({ menu }) {
   return (
-    <>
-      <div className="relative z-30 h-screen w-full bg-gray-900">
-        <Menu menu={menu} />
+    <Layout menu={menu}>
+      <div className="parent relative z-30 h-screen w-full bg-gray-900">
         <div className="flex flex-col justify-center absolute inset-0 z-50 text-gray-50">
           <div className="p-10  table-cell">
             <h1 className="text-9xl font-playfair font-bold">
@@ -104,7 +104,7 @@ export default function Home({ menu }) {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   );
 }
 

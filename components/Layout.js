@@ -1,10 +1,13 @@
 import Head from "next/head";
 import Nav from "./Nav";
 import Image from "next/image";
+import Menu from "../components/Menu";
 import { useState } from "react";
 
-export default function Layout({ children }) {
-  const [menu, setMenu] = useState(null);
+export default function Layout({ menu, children }) {
+  const [showModal, setShowModal] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
     <>
       <Head>
@@ -25,11 +28,22 @@ export default function Layout({ children }) {
         ></link>
       </Head>
       <div id="mainwrapper" className="relative">
-        <Nav />
+        {showMenu && (
+          <Menu
+            setShowModal={setShowModal}
+            setShowMenu={setShowMenu}
+            menu={menu}
+          />
+        )}
+
+        {showModal && (
+          <div className="absolute inset-0 modal bg-black opacity-70"></div>
+        )}
+        <Nav setShowModal={setShowModal} setShowMenu={setShowMenu} />
 
         <main className="relative">{children}</main>
 
-        <div id="body-background" className="inset-0 fixed z-0">
+        <div id="body-background" className="inset-0 fixed">
           <Image src="/../public/body-background.jpg" layout="fill" />
         </div>
       </div>
