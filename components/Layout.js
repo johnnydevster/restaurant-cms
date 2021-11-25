@@ -1,12 +1,14 @@
 import Head from "next/head";
 import Nav from "./Nav";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Layout({ children }) {
+  const [menu, setMenu] = useState(null);
   return (
     <>
       <Head>
-        <title>Local Restaurant</title>
+        <title>Deli Delights</title>
         <script
           src="https://kit.fontawesome.com/43989a61ac.js"
           crossorigin="anonymous"
@@ -22,7 +24,7 @@ export default function Layout({ children }) {
           rel="stylesheet"
         ></link>
       </Head>
-      <div className="relative">
+      <div id="mainwrapper" className="relative">
         <Nav />
 
         <main className="relative">{children}</main>

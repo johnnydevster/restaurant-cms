@@ -1,10 +1,11 @@
-import Head from "next/head";
 import Image from "next/image";
+import Menu from "../components/Menu";
 
-export default function Home({ posts }) {
+export default function Home({ menu }) {
   return (
     <>
       <div className="relative z-30 h-screen w-full bg-gray-900">
+        <Menu menu={menu} />
         <div className="flex flex-col justify-center absolute inset-0 z-50 text-gray-50">
           <div className="p-10  table-cell">
             <h1 className="text-9xl font-playfair font-bold">
@@ -13,37 +14,39 @@ export default function Home({ posts }) {
                 delights
               </span>
             </h1>
-            <h2 className="text-6xl font-playfair font-semibold pt-5">
+            <h2 className="text-6xl font-playfair font-semibold pt-5 text-gray-100">
               Italian cuisine
             </h2>
-            {/* <h3 className="mt-10 font-thin text-xl tracking-wide text-gray-200">
-            Visit us at downtown Sundsvall for your next culinary delight!
-          </h3> */}
           </div>
           <div className="m-10 w-80">
             <h3 className="border-b-4 text-lg border-yellow-500 inline-block">
               Opening hours
             </h3>
-            <table className="mt-6 bg-gray-900 rounded">
-              <tr className="text-left border-b-2 border-gray-800">
-                <th>Mo</th>
-                <th>Tu</th>
-                <th>We</th>
-                <th>Th</th>
-                <th>Fr</th>
-                <th>Sa</th>
-                <th>Su</th>
-              </tr>
-              <tr>
-                <td>10-21</td>
-                <td>10-21</td>
-                <td>10-21</td>
-                <td>10-21</td>
-                <td>11-23</td>
-                <td>11-23</td>
-                <td className="text-red-400">Closed</td>
-              </tr>
-            </table>
+            <div id="table-wrapper" className="relative">
+              <table className="mt-6 bg-gray-900 rounded relative z-10">
+                <tbody>
+                  <tr className="text-left border-b-2 border-gray-800">
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                    <th>Su</th>
+                  </tr>
+                  <tr>
+                    <td>10-21</td>
+                    <td>10-21</td>
+                    <td>10-21</td>
+                    <td>10-21</td>
+                    <td>11-23</td>
+                    <td>11-23</td>
+                    <td className="text-red-400">Closed</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="absolute top-1 left-1 -right-1 -bottom-1 bg-gray-400 opacity-20 rounded"></div>
+            </div>
             <div className="mt-6 flex">
               <button className="cta-btn text-black">Reservation</button>
               <button className="menu-btn ml-3">Menu</button>
@@ -59,9 +62,9 @@ export default function Home({ posts }) {
       </div>
       <section
         id="main"
-        className="sm:mx-5 lg:mx-20 xl:mx-48 relative mb-96 z-10 bg-gray-50"
+        className="sm:mx-5 lg:mx-20 xl:mx-40 relative mb-96 z-10 bg-gray-50"
       >
-        <div className="sm:flex max-w-7xl items-center p-2 sm:p-5">
+        <div className="sm:flex max-w-6xl mx-auto items-center p-2 sm:p-5">
           <div className="h-96 w-full sm:w-4/5 relative shadow-xl">
             <Image
               src="/../public/article-image-1.jpg"
@@ -69,7 +72,7 @@ export default function Home({ posts }) {
               layout="fill"
             />
           </div>
-          <div className="text-gray-500 p-8">
+          <div className="text-gray-500 p-8 text-lg">
             <h1 className="text-gray-700 font-playfair font-black text-4xl mb-2 border-b-4 inline-block border-yellow-400">
               Welcome to Italy
             </h1>
@@ -79,40 +82,30 @@ export default function Home({ posts }) {
             </p>
             <p className="mt-3">
               But where we come from, food isn't just about what you eat - it's
-              who you eat it with.
+              who you eat with.
             </p>
             <p className="mt-3">
               Our cozy atmosphere will be sure to provide you with a memorable
               evening - be it with friends, family, or a special someone.
             </p>
             <div className="mt-5 flex items-center">
-              <button className="cta-btn text-white w-32 h-11">
+              <button className="cta-btn text-white w-34 h-11">
                 Read More
               </button>
-              <i class="transition-all hover: hover:text-gray-300 cursor-pointer ml-10 text-gray-400 text-xl fab fa-facebook-square"></i>
-              <i class="transition-all hover: hover:text-gray-300 cursor-pointer ml-3 text-gray-400 text-xl fab fa-instagram-square"></i>
+              <i
+                aria-hidden
+                class="transition-all hover: hover:text-gray-300 cursor-pointer ml-10 text-gray-400 text-xl fab fa-facebook-square"
+              ></i>
+              <i
+                aria-hidden
+                class="transition-all hover: hover:text-gray-300 cursor-pointer ml-3 text-gray-400 text-xl fab fa-instagram-square"
+              ></i>
             </div>
           </div>
         </div>
       </section>
     </>
   );
-  {
-    /* <div className="mx-auto w-1/2">
-      {posts.length > 0 ? (
-        <div>
-          {posts.map((post) => {
-            return <h1 key={post.slug}>{post.title}</h1>;
-          })}
-        </div>
-      ) : (
-        <h1>No posts were found</h1>
-      )}
-      <a href="https://www.freepik.com/photos/food">
-        Food photo created by timolina - www.freepik.com
-      </a>
-    </div>) */
-  }
 }
 
 export const getStaticProps = async (context) => {
@@ -122,20 +115,28 @@ export const getStaticProps = async (context) => {
     body: JSON.stringify({
       query: `
       query HomePageQuery {
-        posts {
-          nodes {
-            slug
-            title
+        category(id: "Lunch Menu", idType: NAME) {
+          posts {
+            nodes {
+              title
+              excerpt
+              content
+              categories {
+                nodes {
+                  name
+                }
+              }
+            }
           }
         }
       }`,
     }),
   });
-  const posts = await res.json();
+  const menu = await res.json();
 
   return {
     props: {
-      posts: posts.data.posts.nodes,
+      menu: menu.data.category.posts.nodes,
     },
   };
 };
