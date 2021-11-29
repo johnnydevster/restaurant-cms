@@ -28,7 +28,7 @@ export default function Nav({ setShowModal, setShowMenu }) {
 
         <button className="cta-btn">Reservation</button>
       </nav>
-      <div className="rounded top-12 left-2 right-2 h-6 opacity-50 absolute z-40 bg-gray-400"></div>
+      <div className="rounded shadow top-12 left-2 right-2 h-6 opacity-30 fixed z-40 bg-gray-400"></div>
     </>
   );
 }

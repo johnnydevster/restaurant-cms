@@ -1,8 +1,13 @@
 import Image from "next/image";
-import Menu from "../components/Menu";
 import Layout from "../components/Layout";
+import Intro from "../components/Intro";
+import Testimonials from "../components/Testimonials";
 
-export default function Home({ menu }) {
+export default function Home({ setShowMenu, setShowModal, menu }) {
+  function showMenu() {
+    setShowMenu(true);
+    setShowModal(true);
+  }
   return (
     <Layout menu={menu}>
       <div className="parent relative z-30 h-screen w-full bg-gray-900">
@@ -14,7 +19,7 @@ export default function Home({ menu }) {
                 delights
               </span>
             </h1>
-            <h2 className="text-6xl font-playfair font-semibold pt-5 text-gray-100">
+            <h2 className="text-6xl font-playfair font-semibold pt-5 text-white opacity-90">
               Italian cuisine
             </h2>
           </div>
@@ -49,7 +54,9 @@ export default function Home({ menu }) {
             </div>
             <div className="mt-6 flex">
               <button className="cta-btn text-black">Reservation</button>
-              <button className="menu-btn ml-3">Menu</button>
+              <button onClick={() => showMenu()} className="menu-btn ml-3">
+                Menu
+              </button>
             </div>
           </div>
         </div>
@@ -60,50 +67,10 @@ export default function Home({ menu }) {
           className="relative object-cover z-40 object-left transform scale-125 filter contrast-125"
         />
       </div>
-      <section
-        id="main"
-        className="sm:mx-5 lg:mx-20 xl:mx-40 relative mb-96 z-10 bg-gray-50"
-      >
-        <div className="sm:flex max-w-6xl mx-auto items-center p-2 sm:p-5">
-          <div className="h-96 w-full sm:w-4/5 relative shadow-xl">
-            <Image
-              src="/../public/article-image-1.jpg"
-              className="object-cover rounded "
-              layout="fill"
-            />
-          </div>
-          <div className="text-gray-500 p-8 text-lg">
-            <h1 className="text-gray-700 font-playfair font-black text-4xl mb-2 border-b-4 inline-block border-yellow-400">
-              Welcome to Italy
-            </h1>
-            <p className="mt-3">
-              We have a life long love of making the taste of Italy come to life
-              through delicious, carefully prepared meals.
-            </p>
-            <p className="mt-3">
-              But where we come from, food isn't just about what you eat - it's
-              who you eat with.
-            </p>
-            <p className="mt-3">
-              Our cozy atmosphere will be sure to provide you with a memorable
-              evening - be it with friends, family, or a special someone.
-            </p>
-            <div className="mt-5 flex items-center">
-              <button className="cta-btn text-white w-34 h-11">
-                Read More
-              </button>
-              <i
-                aria-hidden
-                class="transition-all hover: hover:text-gray-300 cursor-pointer ml-10 text-gray-400 text-xl fab fa-facebook-square"
-              ></i>
-              <i
-                aria-hidden
-                class="transition-all hover: hover:text-gray-300 cursor-pointer ml-3 text-gray-400 text-xl fab fa-instagram-square"
-              ></i>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div id="main" className="sm:mx-5 lg:mx-20 xl:mx-40 relative mb-96 z-10">
+        <Intro />
+        <Testimonials />
+      </div>
     </Layout>
   );
 }
