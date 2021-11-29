@@ -67,7 +67,7 @@ export default function Home({ setShowMenu, setShowModal, menu }) {
           className="relative object-cover z-40 object-left transform scale-125 filter contrast-125"
         />
       </div>
-      <div id="main" className="sm:mx-5 lg:mx-20 xl:mx-40 relative mb-96 z-10">
+      <div id="main" className=" max-w-6xl mx-auto relative mb-96 z-10">
         <Intro />
         <Testimonials />
       </div>

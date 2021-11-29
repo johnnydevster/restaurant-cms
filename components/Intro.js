@@ -4,7 +4,7 @@ export default function Intro() {
   return (
     <section
       id="intro"
-      className="sm:flex max-w-6xl mx-auto p-2 sm:p-4 items-center bg-gray-50"
+      className="sm:flex mx-auto p-2 sm:p-4 items-center bg-gray-50 rounded-b-xl"
     >
       <div className="h-96 w-full sm:w-4/5 relative shadow-xl">
         <Image

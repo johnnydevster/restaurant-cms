@@ -36,7 +36,7 @@ export default function Menu({ setShowModal, setShowMenu, menu }) {
     >
       <div
         onClick={setShowMenuFalse}
-        className="transition-all absolute top-5 right-5 bg-gray-700 flex rounded text-gray-300 cursor-pointer hover:bg-gray-400"
+        className="transition-all absolute top-5 right-5 bg-gray-300 flex rounded text-gray-400 cursor-pointer hover:bg-gray-400 hover:text-gray-300"
       >
         <span class="material-icons">close</span>
       </div>
