@@ -11,6 +11,7 @@ export default function Intro() {
           src="/../public/article-image-1.jpg"
           className="object-cover rounded "
           layout="fill"
+          priority
         />
       </div>
       <div className="text-gray-500 p-8 text-lg">
