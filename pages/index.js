@@ -2,6 +2,8 @@ import Image from "next/image";
 import Layout from "../components/Layout";
 import Intro from "../components/Intro";
 import Testimonials from "../components/Testimonials/Testimonials";
+import Visit from "../components/Visit";
+import Favorites from "../components/Favorites";
 
 export default function Home({ setShowMenu, setShowModal, menu }) {
   function showMenu() {
@@ -70,10 +72,8 @@ export default function Home({ setShowMenu, setShowModal, menu }) {
       <div id="main" className=" max-w-6xl mx-auto relative mb-96 z-10">
         <Intro />
         <Testimonials />
-        <section
-          id="places"
-          className="sm:flex mx-auto p-2 sm:p-4 items-center bg-gray-50 rounded-t-xl h-96"
-        ></section>
+        <Visit />
+        <Favorites />
       </div>
     </Layout>
   );
