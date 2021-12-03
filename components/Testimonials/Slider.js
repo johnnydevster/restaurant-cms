@@ -2,11 +2,22 @@ import Testimonial from "./Testimonial";
 import { useState, useEffect } from "react";
 
 export default function Slider({ elements }) {
+  // Slider component
+  //
+  // Takes an array of objects as props, and uses CSS translate to slide between elements.
+
   const [sliderIndex, setSliderIndex] = useState(null);
+  // The index of the currently focused element.
+
   const [middleElement, setMiddleElement] = useState(null);
+  // The index of the middle element in the passed array.
+
   const [sliderTranslate, setSliderTranslate] = useState(0);
+  // The amount of CSS translate (plus or minus) that should be used to move the elements left or right.
 
   function handleRightArrow() {
+    // Calculate new value of 'sliderTranslate' to move the elements left.
+    // If you're at the last element, move to the first instead.
     if (sliderIndex === elements.length - 1) {
       setSliderIndex(0);
       const translateIndex = middleElement;
@@ -18,6 +29,8 @@ export default function Slider({ elements }) {
   }
 
   function handleLeftArrow() {
+    // Calculate new value of 'sliderTranslate' to move the elements right.
+    // If you're at the first element, move to the last instead.
     if (sliderIndex === 0) {
       setSliderIndex(elements.length - 1);
       const translateIndex = elements.length - 1 - middleElement;
@@ -29,16 +42,17 @@ export default function Slider({ elements }) {
   }
 
   function handleBlobClick(clickedIndex) {
+    // Calculate new value of 'sliderTranslate' when the blob-buttons are clicked.
     const translateIndex = clickedIndex - sliderIndex;
-    console.log(translateIndex * -33.33);
-    setSliderTranslate(translateIndex * -33.33);
+    setSliderTranslate(sliderTranslate + translateIndex * -33.33);
     setSliderIndex(clickedIndex);
   }
 
   useEffect(() => {
+    // Get the index of the middlemost item in the array passed in as props.
+    // Initialize sliderIndex to this value.
+
     if (elements) {
-      // Get the index of the middlemost item in the array passed in as props.
-      // Set sliderIndex to this value.
       const middle = Math.floor(elements.length / 2) - 1;
       setSliderIndex(middle);
       setMiddleElement(middle);
