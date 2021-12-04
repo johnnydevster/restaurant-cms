@@ -3,7 +3,7 @@ export default function MenuSubCategory({ category }) {
     <div className="">
       {category.map((menuitem) => {
         return (
-          <div className="mb-6">
+          <div key={menuitem.title} className="mb-6">
             <div className="flex justify-between">
               <h3 className="font-bold text-xl text-gray-600">
                 {menuitem.title}
