@@ -1,11 +1,8 @@
 import Image from "next/image";
 
-export default function Favorites() {
+export default function Favorite() {
   return (
-    <section
-      id="favorites"
-      className="sm:flex mx-auto p-2 sm:p-4 items-center bg-gray-50 rounded-b-xl"
-    >
+    <div className="sm:flex mx-auto items-center">
       <div className="h-96 w-full sm:w-4/5 relative shadow-xl">
         <Image
           src="/../public/article-image-1.jpg"
@@ -42,6 +39,6 @@ export default function Favorites() {
           ></i>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

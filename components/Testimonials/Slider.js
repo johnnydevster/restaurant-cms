@@ -49,7 +49,7 @@ export default function Slider({ elements }) {
   }
 
   useEffect(() => {
-    // Get the index of the middlemost item in the array passed in as props.
+    // Calculate the index of the middlemost item in the array passed in as props.
     // Initialize sliderIndex to this value.
 
     if (elements) {

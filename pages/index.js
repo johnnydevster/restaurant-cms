@@ -3,9 +3,9 @@ import Layout from "../components/Layout";
 import Intro from "../components/Intro";
 import Testimonials from "../components/Testimonials/Testimonials";
 import Visit from "../components/Visit";
-import Favorites from "../components/Favorites";
+import Favorites from "../components/Favorites/Favorites";
 
-export default function Home({ setShowMenu, setShowModal, menu }) {
+export default function Home({ setShowMenu, setShowModal, menu, favorites }) {
   function showMenu() {
     setShowMenu(true);
     setShowModal(true);
@@ -73,14 +73,14 @@ export default function Home({ setShowMenu, setShowModal, menu }) {
         <Intro />
         <Testimonials />
         <Visit />
-        <Favorites />
+        <Favorites favorites={favorites} />
       </div>
     </Layout>
   );
 }
 
 export const getStaticProps = async (context) => {
-  const res = await fetch(process.env.apiEndpoint, {
+  const menuRequest = await fetch(process.env.apiEndpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -103,11 +103,36 @@ export const getStaticProps = async (context) => {
       }`,
     }),
   });
-  const menu = await res.json();
+  const favoritesRequest = await fetch(process.env.apiEndpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+      query HomePageQuery {
+        favoriteDishes {
+          nodes {
+            data {
+              description
+              name
+              price
+              image {
+                title
+                altText
+                sourceUrl
+              }
+            }
+          }
+        }
+      }`,
+    }),
+  });
+  const menu = await menuRequest.json();
+  const favorites = await favoritesRequest.json();
 
   return {
     props: {
       menu: menu.data.category.posts.nodes,
+      favorites: favorites.data.favoriteDishes.nodes,
     },
   };
 };
