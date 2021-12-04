@@ -2,6 +2,7 @@ import Head from "next/head";
 import Nav from "./Nav";
 import Image from "next/image";
 import Menu from "../components/Menu";
+import Footer from "../components/Footer";
 import { useState } from "react";
 
 export default function Layout({ menu, children }) {
@@ -42,6 +43,7 @@ export default function Layout({ menu, children }) {
         <Nav setShowModal={setShowModal} setShowMenu={setShowMenu} />
 
         <main className="relative">{children}</main>
+        <Footer />
 
         <div id="body-background" className="inset-0 fixed">
           <Image src="/../public/body-background.jpg" layout="fill" />

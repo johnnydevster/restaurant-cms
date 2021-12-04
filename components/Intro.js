@@ -1,11 +1,18 @@
 import Image from "next/image";
+import Head from "next/head";
 
 export default function Intro() {
   return (
     <>
+      <Head>
+        <script
+          src="https://kit.fontawesome.com/43989a61ac.js"
+          crossorigin="anonymous"
+        ></script>
+      </Head>
       <section
         id="intro"
-        className="pt-10 flex flex-col mx-auto items-center bg-gray-50"
+        className="pt-10 px-5 flex flex-col mx-auto items-center bg-gray-50"
       >
         <div className="sm:flex">
           <div className="h-96 w-full sm:w-4/5 relative shadow">
@@ -36,14 +43,8 @@ export default function Intro() {
               <button className="cta-btn text-white w-34 h-11">
                 Read More
               </button>
-              <i
-                aria-hidden
-                class="transition-all hover: hover:text-gray-300 cursor-pointer ml-10 text-gray-400 text-xl fab fa-facebook-square"
-              ></i>
-              <i
-                aria-hidden
-                class="transition-all hover: hover:text-gray-300 cursor-pointer ml-3 text-gray-400 text-xl fab fa-instagram-square"
-              ></i>
+              <i className="transition-all hover:text-gray-300 cursor-pointer ml-10 text-gray-400 text-xl fab fa-facebook-square"></i>
+              <i className="transition-all hover:text-gray-300 cursor-pointer ml-3 text-gray-400 text-xl fab fa-instagram-square"></i>
             </div>
           </div>
         </div>

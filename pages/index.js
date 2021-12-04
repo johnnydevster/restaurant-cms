@@ -69,7 +69,7 @@ export default function Home({ setShowMenu, setShowModal, menu, favorites }) {
           className="relative object-cover z-40 object-left transform scale-125 filter contrast-125"
         />
       </div>
-      <div id="main" className=" max-w-6xl mx-auto relative mb-96 z-10">
+      <div id="main" className="max-w-6xl mx-auto relative z-10">
         <Intro />
         <Visit />
         <Favorites favorites={favorites} />

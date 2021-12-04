@@ -9,7 +9,7 @@ export default function Favorites({ favorites }) {
           Some of our favorites
         </h1>
       </div>
-      <div id="favoritecontainer" className="mt-16 lg:w-4/5 mx-auto">
+      <div id="favoritecontainer" className="mb-10 mt-16 lg:w-4/5 mx-auto">
         {favorites.map((favorite) => {
           return (
             <Favorite
