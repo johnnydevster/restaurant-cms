@@ -3,10 +3,10 @@ export default function Visit() {
     <>
       <section
         id="visit"
-        className="sm:flex mx-auto p-2 sm:p-4 items-center bg-gray-50 rounded-t-xl flex-col"
+        className="sm:flex mx-auto p-2 sm:p-4 items-center bg-gray-50 flex-col"
       >
-        <div className="text-gray-500 text-lg w-full">
-          <div className="mt-6 w-full text-center">
+        <div className="mt-7 text-gray-500 text-lg w-full">
+          <div className="w-full text-center">
             <h1 className="text-gray-700 font-playfair font-black text-5xl border-b-4 inline-block border-yellow-400">
               Come visit us
             </h1>

@@ -71,9 +71,9 @@ export default function Home({ setShowMenu, setShowModal, menu, favorites }) {
       </div>
       <div id="main" className=" max-w-6xl mx-auto relative mb-96 z-10">
         <Intro />
-        <Testimonials />
         <Visit />
         <Favorites favorites={favorites} />
+        <Testimonials />
       </div>
     </Layout>
   );
@@ -134,5 +134,6 @@ export const getStaticProps = async (context) => {
       menu: menu.data.category.posts.nodes,
       favorites: favorites.data.favoriteDishes.nodes,
     },
+    revalidate: 10,
   };
 };
