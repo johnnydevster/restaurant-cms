@@ -4,8 +4,10 @@ import Intro from "../components/Intro";
 import Testimonials from "../components/Testimonials/Testimonials";
 import Visit from "../components/Visit";
 import Favorites from "../components/Favorites/Favorites";
+import { useState } from "react";
 
 export default function Home({ setShowMenu, setShowModal, menu, favorites }) {
+  const [showOpeningHours, setShowOpeningHours] = useState(false);
   function showMenu() {
     setShowMenu(true);
     setShowModal(true);
@@ -13,50 +15,61 @@ export default function Home({ setShowMenu, setShowModal, menu, favorites }) {
   return (
     <Layout menu={menu}>
       <div className="parent relative z-30 h-screen w-full bg-gray-900">
-        <div className="flex flex-col justify-center absolute inset-0 z-50 text-gray-50">
-          <div className="p-10  table-cell">
-            <h1 className="text-9xl font-playfair font-bold">
+        <div className="mt-16 flex flex-col justify-center absolute inset-0 z-50 text-gray-50">
+          <div className="p-2 sm:p-10 table-cell text-center h-1/4 sm:h-auto sm:text-left">
+            <h1 className="text-5xl sm:text-7xl md:text-9xl font-playfair font-bold">
               Deli{" "}
               <span className="text-yellow-400 font-playfair underline">
                 delights
               </span>
             </h1>
-            <h2 className="text-6xl font-playfair font-semibold pt-5 text-white opacity-90">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-playfair font-semibold pt-2 sm:pt-5 text-white opacity-90">
               Italian cuisine
             </h2>
           </div>
-          <div className="m-10 w-80">
-            <h3 className="border-b-4 text-lg border-yellow-500 inline-block">
-              Opening hours
-            </h3>
-            <div id="table-wrapper" className="relative">
-              <table className="mt-6 bg-gray-900 rounded relative z-10">
-                <tbody>
-                  <tr className="text-left border-b-2 border-gray-800">
-                    <th>Mo</th>
-                    <th>Tu</th>
-                    <th>We</th>
-                    <th>Th</th>
-                    <th>Fr</th>
-                    <th>Sa</th>
-                    <th>Su</th>
-                  </tr>
-                  <tr>
-                    <td>10-21</td>
-                    <td>10-21</td>
-                    <td>10-21</td>
-                    <td>10-21</td>
-                    <td>11-23</td>
-                    <td>11-23</td>
-                    <td className="text-red-400">Closed</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="absolute top-1 left-1 -right-1 -bottom-1 bg-gray-400 opacity-20 rounded"></div>
+          <div className="m-2 sm:m-10 mx-auto flex sm:flex-col items-center sm:items-start">
+            <div>
+              <h3 className="border-b-4 text-lg border-yellow-500 inline-block">
+                Opening hours
+              </h3>
+              <div
+                id="table-wrapper"
+                className="relative w-32 sm:w-auto max-w-xl "
+              >
+                <table className="mt-3 sm:mt-6 bg-gray-900 rounded relative z-10">
+                  <tbody className="flex sm:table-row-group">
+                    <tr className="sm:border-b-2 border-gray-800 w-1/2">
+                      <th>Mo</th>
+                      <th>Tu</th>
+                      <th>We</th>
+                      <th>Th</th>
+                      <th>Fr</th>
+                      <th>Sa</th>
+                      <th>Su</th>
+                    </tr>
+                    <tr>
+                      <td>10-21</td>
+                      <td>10-21</td>
+                      <td>10-21</td>
+                      <td>11-23</td>
+                      <td>11-23</td>
+                      <td>10-21</td>
+                      <td className="text-red-400">Closed</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="absolute top-1 left-1 -right-1 -bottom-1 bg-gray-400 opacity-20 rounded"></div>
+              </div>
             </div>
-            <div className="mt-6 flex">
-              <button className="cta-btn text-black">Reservation</button>
-              <button onClick={() => showMenu()} className="menu-btn ml-3">
+
+            <div className="ml-5 sm:ml-0 sm:mt-6 flex sm:block flex-col">
+              <button className="cta-btn text-sm w-32 text-black">
+                Reservation
+              </button>
+              <button
+                onClick={() => showMenu()}
+                className="menu-btn sm:ml-3 mt-2 sm:mt-0 text-sm w-32"
+              >
                 Menu
               </button>
             </div>

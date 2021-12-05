@@ -63,13 +63,13 @@ export default function Slider({ elements }) {
     <div className="relative">
       <span
         onClick={handleLeftArrow}
-        class="select-none transition-all material-icons text-6xl absolute -left-10 transform -translate-y-1/2 top-1/2 text-white opacity-80 hover:opacity-90 cursor-pointer"
+        class="select-none transition-all material-icons text-6xl absolute -left-2 transform -translate-y-1/2 top-1/2 text-white opacity-80 hover:opacity-90 cursor-pointer"
       >
         keyboard_arrow_left
       </span>
       <span
         onClick={handleRightArrow}
-        class="select-none transition-all material-icons text-6xl absolute -right-10 transform -translate-y-1/2 top-1/2 text-white opacity-80 hover:opacity-90 cursor-pointer"
+        class="select-none transition-all material-icons text-6xl absolute -right-2 transform -translate-y-1/2 top-1/2 text-white opacity-80 hover:opacity-90 cursor-pointer"
       >
         keyboard_arrow_right
       </span>
@@ -97,7 +97,7 @@ export default function Slider({ elements }) {
         className="relative mt-5 h-96 overflow-x-hidden flex items-center"
       >
         <div
-          className="transition-all ease-in-out duration-500 flex max-w-full transform"
+          className="transition-all ease-in-out duration-500 flex w-full transform"
           style={{ transform: `translate(${sliderTranslate}%)` }}
         >
           {elements &&

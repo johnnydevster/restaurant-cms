@@ -30,17 +30,21 @@
   }
 
   #table-wrapper {
-    width: 36rem;
   }
 
   th {
-    padding: 0.5rem 1.5rem;
-    text-align: left;
+    text-align: center;
+    display: block;
+    padding: 0.5rem;
+    font-size: 0.9rem;
   }
 
   td {
-    padding: 1rem 1.5rem;
     white-space: nowrap;
+    text-align: left;
+    display: block;
+    padding: 0.5rem;
+    font-size: 0.9rem;
   }
 
   #menu {
@@ -48,5 +52,17 @@
   }
   .modal {
     z-index: 60;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  th {
+    display: table-cell;
+    text-align: left;
+    font-size: 1rem;
+  }
+  td {
+    display: table-cell;
+    font-size: 1rem;
   }
 }
