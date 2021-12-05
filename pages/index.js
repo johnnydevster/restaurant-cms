@@ -4,11 +4,15 @@ import Intro from "../components/Intro";
 import Testimonials from "../components/Testimonials/Testimonials";
 import Visit from "../components/Visit";
 import Favorites from "../components/Favorites/Favorites";
-import { useState } from "react";
+import { MenuContext } from "../components/context/MenuContext";
 
-export default function Home({ setShowMenu, setShowModal, menu, favorites }) {
+import { useState, useContext } from "react";
+
+export default function Home({ menu, favorites }) {
+  const { setShowMenu, setShowModal } = useContext(MenuContext);
+
   const [showOpeningHours, setShowOpeningHours] = useState(false);
-  function showMenu() {
+  function handleMenu() {
     setShowMenu(true);
     setShowModal(true);
   }
@@ -67,7 +71,7 @@ export default function Home({ setShowMenu, setShowModal, menu, favorites }) {
                 Reservation
               </button>
               <button
-                onClick={() => showMenu()}
+                onClick={() => handleMenu()}
                 className="menu-btn sm:ml-3 mt-2 sm:mt-0 text-sm w-32"
               >
                 Menu

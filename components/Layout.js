@@ -3,11 +3,13 @@ import Nav from "./Nav";
 import Image from "next/image";
 import Menu from "../components/Menu";
 import Footer from "../components/Footer";
-import { useState } from "react";
+import { useContext } from "react";
+import React from "react";
+import { MenuContext } from "../components/context/MenuContext";
 
 export default function Layout({ menu, children }) {
-  const [showModal, setShowModal] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  const { setShowMenu, setShowModal, showMenu, showModal } =
+    useContext(MenuContext);
 
   return (
     <>
