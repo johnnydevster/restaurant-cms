@@ -1,5 +1,6 @@
 import Testimonial from "./Testimonial";
 import { useState, useEffect } from "react";
+import { useWindowDimensions } from "../../utils/Hooks";
 
 export default function Slider({ elements }) {
   // Slider component
@@ -15,16 +16,21 @@ export default function Slider({ elements }) {
   const [sliderTranslate, setSliderTranslate] = useState(0);
   // The amount of CSS translate (plus or minus) that should be used to move the elements left or right.
 
+  const [translateFactor, setTranslateFactor] = useState();
+  // The translate factor used, changes when window width goes below a certain threshold.
+
+  const { width: windowWidth } = useWindowDimensions();
+
   function handleRightArrow() {
     // Calculate new value of 'sliderTranslate' to move the elements left.
     // If you're at the last element, move to the first instead.
     if (sliderIndex === elements.length - 1) {
       setSliderIndex(0);
       const translateIndex = middleElement;
-      setSliderTranslate(translateIndex * 33.33);
+      setSliderTranslate(translateIndex * translateFactor);
     } else {
       setSliderIndex(sliderIndex + 1);
-      setSliderTranslate(sliderTranslate - 33.33);
+      setSliderTranslate(sliderTranslate - translateFactor);
     }
   }
 
@@ -34,17 +40,17 @@ export default function Slider({ elements }) {
     if (sliderIndex === 0) {
       setSliderIndex(elements.length - 1);
       const translateIndex = elements.length - 1 - middleElement;
-      setSliderTranslate(translateIndex * -33.33);
+      setSliderTranslate(translateIndex * -translateFactor);
     } else {
       setSliderIndex(sliderIndex - 1);
-      setSliderTranslate(sliderTranslate + 33.33);
+      setSliderTranslate(sliderTranslate + translateFactor);
     }
   }
 
   function handleBlobClick(clickedIndex) {
     // Calculate new value of 'sliderTranslate' when the blob-buttons are clicked.
     const translateIndex = clickedIndex - sliderIndex;
-    setSliderTranslate(sliderTranslate + translateIndex * -33.33);
+    setSliderTranslate(sliderTranslate + translateIndex * -translateFactor);
     setSliderIndex(clickedIndex);
   }
 
@@ -59,8 +65,19 @@ export default function Slider({ elements }) {
     }
   }, [elements]);
 
+  useEffect(() => {
+    // If window size changes, change the translate factor accordingly and set a new sliderTranslate according to new factor.
+    if (windowWidth < 640) {
+      setTranslateFactor(100);
+      setSliderTranslate(-100 * (sliderIndex - 1));
+    } else {
+      setTranslateFactor(33.33);
+      setSliderTranslate(-33.33 * (sliderIndex - 1));
+    }
+  }, [windowWidth <= 640, sliderIndex]);
+
   return (
-    <div className="relative">
+    <div className="relative mx-10">
       <span
         onClick={handleLeftArrow}
         class="select-none transition-all material-icons text-6xl absolute -left-2 transform -translate-y-1/2 top-1/2 text-white opacity-80 hover:opacity-90 cursor-pointer"
@@ -110,9 +127,9 @@ export default function Slider({ elements }) {
                   stars={element.stars}
                   className={`${
                     sliderIndex === i
-                      ? "scale-125 z-50 shadow-xl"
-                      : "scale-90 opacity-80"
-                  } transition-all relative ease-in-out duration-500 w-1/3 transform flex-shrink-0`}
+                      ? "sm:scale-125 z-50 shadow-xl"
+                      : "sm:scale-90 opacity-80"
+                  } transition-all relative w-full sm:w-1/3 -translate-x-full sm:translate-x-0 ease-in-out duration-500 transform flex-shrink-0`}
                 />
               );
             })}

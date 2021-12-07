@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function useOutsideAlerter(ref, onClick) {
   /**
@@ -20,11 +20,32 @@ export function useOutsideAlerter(ref, onClick) {
   }, [handleClickOutside]);
 }
 
-/**
- * Component that alerts if you click outside of it
- */
-export default function OutsideAlerter(props) {
-  const wrapperRef = useRef(null);
+export function useWindowDimensions() {
+  const hasWindow = typeof window !== "undefined";
 
-  return <div ref={wrapperRef}>{props.children}</div>;
+  function getWindowDimensions() {
+    const width = hasWindow ? window.innerWidth : null;
+    const height = hasWindow ? window.innerHeight : null;
+    return {
+      width,
+      height,
+    };
+  }
+
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    if (hasWindow) {
+      function handleResize() {
+        setWindowDimensions(getWindowDimensions());
+      }
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, [hasWindow]);
+
+  return windowDimensions;
 }
