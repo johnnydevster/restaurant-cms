@@ -37,7 +37,7 @@ export default function Nav({ setShowModal, setShowMenu }) {
           </li>
         </ul>
         <button className="hidden sm:block cta-btn">Reservation</button>
-        <div className="relative w-10 h-10 z-10 top-1 mx-2">
+        <div className="sm:hidden relative w-10 h-10 z-10 top-1 mx-2">
           <div
             className={`w-full h-full absolute z-20 rounded cursor-pointer ${
               showNav ? "block" : "hidden"

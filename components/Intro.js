@@ -12,10 +12,10 @@ export default function Intro() {
       </Head>
       <section
         id="intro"
-        className="pt-10 px-5 flex flex-col mx-auto items-center bg-gray-50"
+        className="pt-5 sm:pt-10 px-5 flex flex-col mx-auto items-center bg-gray-50"
       >
-        <div className="sm:flex">
-          <div className="h-96 w-full sm:w-4/5 relative shadow">
+        <div className="sm:flex items-center">
+          <div className="h-80 sm:h-96 sm:w-3/5 relative shadow">
             <Image
               src="/../public/article-image-1.jpg"
               className="object-cover rounded "
@@ -23,8 +23,8 @@ export default function Intro() {
               priority
             />
           </div>
-          <div className="text-gray-500 p-8 text-lg">
-            <h1 className="text-gray-700 font-playfair font-black text-4xl mb-2 border-b-4 inline-block border-yellow-400">
+          <div className="text-gray-500 pt-6 sm:p-8 text-lg sm:w-2/3">
+            <h1 className="text-gray-700 font-playfair font-black text-3xl sm:text-4xl mb-2 border-b-4 inline-block border-yellow-400">
               Welcome to Italy
             </h1>
             <p className="mt-3">
