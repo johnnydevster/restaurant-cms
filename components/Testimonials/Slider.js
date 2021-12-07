@@ -1,11 +1,17 @@
 import Testimonial from "./Testimonial";
 import { useState, useEffect } from "react";
 import { useWindowDimensions } from "../../utils/Hooks";
+import { useSwipeable } from "react-swipeable";
 
 export default function Slider({ elements }) {
   // Slider component
   //
   // Takes an array of objects as props, and uses CSS translate to slide between elements.
+
+  const handlers = useSwipeable({
+    onSwipedLeft: (eventData) => handleRightArrow(),
+    onSwipedRight: (eventData) => handleLeftArrow(),
+  });
 
   const [sliderIndex, setSliderIndex] = useState(null);
   // The index of the currently focused element.
@@ -110,6 +116,7 @@ export default function Slider({ elements }) {
         </div>
       )}
       <div
+        {...handlers}
         id="testimonial-container"
         className="relative mt-5 h-96 overflow-x-hidden flex items-center"
       >
@@ -129,7 +136,7 @@ export default function Slider({ elements }) {
                     sliderIndex === i
                       ? "sm:scale-125 z-50 shadow-xl"
                       : "sm:scale-90 opacity-80"
-                  } transition-all relative w-full sm:w-1/3 -translate-x-full sm:translate-x-0 ease-in-out duration-500 transform flex-shrink-0`}
+                  } transition-all w-full sm:w-1/3 -translate-x-full sm:translate-x-0 ease-in-out duration-500 transform flex-shrink-0`}
                 />
               );
             })}
