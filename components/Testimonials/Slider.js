@@ -97,7 +97,7 @@ export default function Slider({ elements }) {
         className="relative mt-5 h-96 overflow-x-hidden flex items-center"
       >
         <div
-          className="transition-all ease-in-out duration-500 flex w-full transform"
+          className="relative transition-all ease-in-out duration-500 flex w-full transform"
           style={{ transform: `translate(${sliderTranslate}%)` }}
         >
           {elements &&
@@ -112,7 +112,7 @@ export default function Slider({ elements }) {
                     sliderIndex === i
                       ? "scale-125 z-50 shadow-xl"
                       : "scale-90 opacity-80"
-                  } transition-all ease-in-out duration-500 relative transform w-1/3 flex-shrink-0`}
+                  } transition-all relative ease-in-out duration-500 w-1/3 transform flex-shrink-0`}
                 />
               );
             })}
