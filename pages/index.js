@@ -85,7 +85,7 @@ export default function Home({ menu, favorites }) {
           className="relative object-cover z-40 object-left transform scale-125 filter contrast-125"
         />
       </div>
-      <div id="main" className="max-w-6xl mx-auto relative z-10">
+      <div className="main">
         <Intro />
         <Visit />
         <Favorites favorites={favorites} />

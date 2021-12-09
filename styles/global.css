@@ -29,9 +29,6 @@
     table-layout: fixed;
   }
 
-  #table-wrapper {
-  }
-
   th {
     text-align: center;
     display: block;
@@ -50,8 +47,13 @@
   #menu {
     z-index: 70;
   }
+
   .modal {
     z-index: 60;
+  }
+
+  .main {
+    @apply max-w-6xl mx-auto relative z-10;
   }
 }
 

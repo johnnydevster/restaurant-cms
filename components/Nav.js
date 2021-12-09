@@ -12,6 +12,7 @@ export default function Nav({ setShowModal, setShowMenu }) {
   function handleMenu() {
     setShowModal(true);
     setShowMenu(true);
+    setShowNav(false);
   }
 
   function handleNav() {
@@ -23,12 +24,22 @@ export default function Nav({ setShowModal, setShowMenu }) {
         <Image src="/../public/logo.png" width={50} height={50} />
 
         <ul className="hidden sm:flex font-semibold mx-auto w-60 justify-between items-center uppercase">
-          <li className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
-            Home
+          <li>
+            <Link href="./">
+              <a className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
+                Home
+              </a>
+            </Link>
           </li>
-          <li className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
-            About
+
+          <li>
+            <Link href="./about">
+              <a className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
+                About
+              </a>
+            </Link>
           </li>
+
           <li
             onClick={() => handleMenu()}
             className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500"
