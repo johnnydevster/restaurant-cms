@@ -6,12 +6,11 @@ import Visit from "../components/Visit";
 import Favorites from "../components/Favorites/Favorites";
 import { MenuContext } from "../components/context/MenuContext";
 
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 export default function Home({ menu, favorites }) {
   const { setShowMenu, setShowModal } = useContext(MenuContext);
 
-  const [showOpeningHours, setShowOpeningHours] = useState(false);
   function handleMenu() {
     setShowMenu(true);
     setShowModal(true);

@@ -32,13 +32,24 @@ export default function Menu({ setShowModal, setShowMenu, menu }) {
     <div
       ref={menuRef}
       id="menu"
-      className="bg-gray-100 p-10 border-t-8 border-yellow-400 max-w-3xl mx-auto fixed z-70 inset-0 max-h-screen overflow-auto"
+      className="bg-gray-100 p-5 sm:p-10 border-t-8 border-yellow-400 max-w-3xl mx-auto fixed z-70 inset-0 max-h-screen overflow-auto"
     >
       <div
         onClick={setShowMenuFalse}
-        className="transition-all absolute top-5 right-5 bg-gray-300 flex rounded text-gray-400 cursor-pointer hover:bg-gray-400 hover:text-gray-300"
+        className="sticky -top-5 left-full hidden sm:flex w-8 h-8 transition-all justify-center items-center cursor-pointer bg-gray-300 rounded text-gray-400 hover:bg-gray-400 hover:text-gray-300"
       >
-        <span class="material-icons">close</span>
+        <span className="material-icons select-none">close</span>
+      </div>
+      <div className="flex items-center justify-end sm:hidden px-10 fixed bottom-0 left-0 right-0 h-14 bg-gray-700">
+        <div
+          onClick={setShowMenuFalse}
+          className="flex items-center cursor-pointer"
+        >
+          <span className="text-gray-100">Close menu</span>
+          <span className="material-icons text-gray-400 ml-3 bg-gray-100 rounded select-none">
+            close
+          </span>
+        </div>
       </div>
       <h1 className="text-4xl">Menu</h1>
       <section id="starters" className="mt-10 ">
