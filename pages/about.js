@@ -44,7 +44,7 @@ export const getStaticProps = async (context) => {
       query HomePageQuery {
         chefs {
           nodes {
-            data {
+            chefs {
               name
               intro
               favoriteFood
