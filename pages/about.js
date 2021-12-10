@@ -1,11 +1,13 @@
 import Layout from "../components/Layout";
 import Chefs from "../components/About/Chefs";
+import News from "../components/About/News";
 
 export default function About({ menu, chefs }) {
   return (
     <Layout menu={menu}>
       <div className="main">
         <Chefs chefs={chefs} />
+        <News />
       </div>
     </Layout>
   );

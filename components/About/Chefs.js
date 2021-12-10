@@ -8,7 +8,7 @@ export default function Chefs({ chefs }) {
           Meet our chefs
         </h1>
       </div>
-      <div className="chefs max-w-2xl mx-auto">
+      <div className="chefs mt-10 sm:mt-0 max-w-sm sm:max-w-2xl mx-auto">
         {chefs.length > 0 &&
           chefs.map((chef) => {
             return (
