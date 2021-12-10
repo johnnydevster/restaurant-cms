@@ -43,8 +43,14 @@ export default function Intro() {
               <button className="cta-btn text-white w-34 h-11">
                 Read More
               </button>
-              <i className="transition-all hover:text-gray-300 cursor-pointer ml-10 text-gray-400 text-xl fab fa-facebook-square"></i>
-              <i className="transition-all hover:text-gray-300 cursor-pointer ml-3 text-gray-400 text-xl fab fa-instagram-square"></i>
+              <i
+                aria-hidden
+                className="transition-all hover:text-gray-300 cursor-pointer ml-10 text-gray-400 text-xl fab fa-facebook-square"
+              ></i>
+              <i
+                aria-hidden
+                className="transition-all hover:text-gray-300 cursor-pointer ml-3 text-gray-400 text-xl fab fa-instagram-square"
+              ></i>
             </div>
           </div>
         </div>

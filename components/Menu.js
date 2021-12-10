@@ -40,7 +40,7 @@ export default function Menu({ setShowModal, setShowMenu, menu }) {
       >
         <span className="material-icons select-none">close</span>
       </div>
-      <div className="flex items-center justify-end sm:hidden px-10 fixed bottom-0 left-0 right-0 h-14 bg-gray-700">
+      <div className="flex items-center justify-end sm:hidden px-10 fixed bottom-0 left-0 right-0 h-16 bg-gray-700">
         <div
           onClick={setShowMenuFalse}
           className="flex items-center cursor-pointer"

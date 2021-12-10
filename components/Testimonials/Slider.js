@@ -103,7 +103,7 @@ export default function Slider({ elements }) {
               <span
                 key={i + element.user}
                 onClick={() => handleBlobClick(i)}
-                class={`${
+                className={`${
                   sliderIndex === i
                     ? "text-lg opacity-90"
                     : "text-base opacity-50"

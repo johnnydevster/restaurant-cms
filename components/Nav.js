@@ -25,7 +25,7 @@ export default function Nav({ setShowModal, setShowMenu }) {
 
         <ul className="hidden sm:flex font-semibold mx-auto w-60 justify-between items-center uppercase">
           <li>
-            <Link href="./">
+            <Link href="/">
               <a className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
                 Home
               </a>
@@ -33,7 +33,7 @@ export default function Nav({ setShowModal, setShowMenu }) {
           </li>
 
           <li>
-            <Link href="./about">
+            <Link href="/about">
               <a className="hover:text-gray-700 transition-all ease-in-out cursor-pointer border-b-4 border-gray-50 mt-1 hover:border-yellow-500">
                 About
               </a>
@@ -56,7 +56,7 @@ export default function Nav({ setShowModal, setShowMenu }) {
           ></div>
           <span
             onClick={handleNav}
-            class={`absolute material-icons text-3xl px-1 ${
+            className={`absolute material-icons text-3xl px-1 ${
               showNav ? "bg-gray-800" : "bg-gray-200"
             } text-gray-500 rounded cursor-pointer select-none`}
           >
@@ -70,11 +70,19 @@ export default function Nav({ setShowModal, setShowMenu }) {
           }`}
         >
           <ul className="ml-5 h-36 justify-between font-semibold text-2xl uppercase text-yellow-400 flex flex-col">
-            <li className="hover:text-yellow-300 transition-all ease-in-out cursor-pointer">
-              Home
+            <li>
+              <Link href="/">
+                <a className="hover:text-yellow-300 transition-all ease-in-out cursor-pointer">
+                  Home
+                </a>
+              </Link>
             </li>
-            <li className="hover:text-yellow-300 transition-all ease-in-out cursor-pointer">
-              About
+            <li>
+              <Link href="/about">
+                <a className="hover:text-yellow-300 transition-all ease-in-out cursor-pointer">
+                  About
+                </a>
+              </Link>
             </li>
             <li
               onClick={() => handleMenu()}

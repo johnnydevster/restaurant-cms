@@ -33,7 +33,7 @@ export default function Footer() {
             </h4>
             <div className=" text-yellow-400 flex items-center hover:text-yellow-300 cursor-pointer">
               <h4>Back to top</h4>
-              <span class="material-icons text-3xl">keyboard_arrow_up</span>
+              <span className="material-icons text-3xl">keyboard_arrow_up</span>
             </div>
           </div>
         </div>

@@ -14,10 +14,10 @@ export default function Favorites({ favorites }) {
         id="favoritecontainer"
         className="mb-10 mt-12 max-w-3xl mx-auto sm:grid grid-cols-2 gap-3 sm:gap-5"
       >
-        {favorites.map((favorite) => {
+        {favorites.map((favorite, i) => {
           return (
             <Favorite
-              key={favorite.data.title}
+              key={`${i} ${favorite.data.title}`}
               name={favorite.data.name}
               description={favorite.data.description}
               price={favorite.data.price}

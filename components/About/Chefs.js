@@ -10,9 +10,10 @@ export default function Chefs({ chefs }) {
       </div>
       <div className="chefs mt-10 sm:mt-0 max-w-sm sm:max-w-2xl mx-auto">
         {chefs.length > 0 &&
-          chefs.map((chef) => {
+          chefs.map((chef, i) => {
             return (
               <Chef
+                key={`${i} ${chef.chefs.name}`}
                 name={chef.chefs.name}
                 intro={chef.chefs.intro}
                 favoriteFood={chef.chefs.favoriteFood}
