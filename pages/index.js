@@ -17,7 +17,7 @@ export default function Home({ menu, favorites }) {
   }
   return (
     <Layout menu={menu}>
-      <div className="parent relative z-30 h-screen w-full bg-gray-900">
+      <div className="hero relative z-30 h-screen w-full bg-gray-900">
         <div className="mt-16 flex flex-col justify-center absolute inset-0 z-50 text-gray-50">
           <div className="p-2 sm:p-10 table-cell text-center h-1/4 sm:h-auto sm:text-left">
             <h1 className="text-5xl sm:text-7xl md:text-9xl font-playfair font-bold">

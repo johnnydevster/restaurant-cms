@@ -10,7 +10,7 @@ export default function Footer() {
         ></script>
       </Head>
       <footer className="w-full h-96 bg-gray-900 relative z-10">
-        <div className="w-full h-full px-10 flex flex-col justify-between">
+        <div className="w-full h-full px-3 sm:px-5 flex flex-col justify-between">
           <div className="flex w-full h-16 items-center justify-between border-b-4 border-dotted border-opacity-10">
             <div className=" text-white text-xl">
               Deli <span className="text-yellow-400">delights</span>
@@ -27,9 +27,9 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex w-full h-16 items-center justify-between border-t-4 border-dotted border-opacity-10">
-            <h4 className="text-gray-400">
-              Deli delights {`${new Date().getFullYear()}`}. All Rights
-              Reserved.
+            <h4 className="text-gray-400 text-sm">
+              Deli delights {`${new Date().getFullYear()}`}.<br />
+              All Rights Reserved.
             </h4>
             <div className=" text-yellow-400 flex items-center hover:text-yellow-300 cursor-pointer">
               <h4>Back to top</h4>
