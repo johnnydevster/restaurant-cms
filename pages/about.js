@@ -1,13 +1,13 @@
 import Layout from "../components/Layout";
 import Chefs from "../components/About/Chefs";
-import News from "../components/About/News";
+import News from "../components/News/News";
 
-export default function About({ menu, chefs }) {
+export default function About({ menu, chefs, news }) {
   return (
     <Layout menu={menu}>
       <div className="main">
         <Chefs chefs={chefs} />
-        <News />
+        <News news={news} />
       </div>
     </Layout>
   );
@@ -61,13 +61,45 @@ export const getStaticProps = async (context) => {
     }),
   });
 
+  const newsRequest = await fetch(process.env.apiEndpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+      query MyQuery {
+        allNews {
+          nodes {
+            title
+            content
+            date
+            featuredImage {
+              node {
+                author {
+                  node {
+                    name
+                  }
+                }
+                sourceUrl
+              }
+            }
+            customExcerpt {
+              excerpt
+            }
+          }
+        }
+      }`,
+    }),
+  });
+
   const menu = await menuRequest.json();
   const chefs = await chefsRequest.json();
+  const news = await newsRequest.json();
 
   return {
     props: {
       menu: menu.data.category.posts.nodes,
       chefs: chefs.data.chefs.nodes,
+      news: news.data.allNews.nodes,
     },
     revalidate: 10,
   };
