@@ -72,6 +72,7 @@ export const getStaticProps = async (context) => {
             title
             content
             date
+            slug
             featuredImage {
               node {
                 author {

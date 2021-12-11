@@ -18,6 +18,7 @@ export default function News({ news }) {
                   image={newspost.featuredImage.node.sourceUrl}
                   author={newspost.featuredImage.node.author.node.name}
                   date={newspost.date}
+                  slug={newspost.slug}
                 />
               );
             })}

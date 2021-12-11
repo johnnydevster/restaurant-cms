@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Chef({ name, intro, favoriteFood, picture, altText }) {
   return (
-    <article className="bg-gray-100 border mt-4 p-0 sm:p-6 rounded sm:flex items-center text-gray-600 text-sm shadow">
-      <div className="h-56 w-full mx-auto sm:h-64 sm:w-64 relative rounded-t sm:rounded-full sm:border-4 border-gray-300 flex-shrink-0">
+    <article className="bg-gray-100 border mt-4 p-0 sm:p-2 rounded sm:flex items-center text-gray-600 text-sm shadow">
+      <div className="h-56 w-full mx-auto sm:h-52 sm:w-52 relative rounded-t sm:rounded-full sm:border-4 border-gray-300 flex-shrink-0">
         <Image
           priority
           layout="fill"

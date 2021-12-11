@@ -1,18 +1,63 @@
 import Layout from "../../components/Layout";
+import Image from "next/image";
+import Link from "next/link";
+import Preview from "../../components/news/Preview";
 
-export default function Post({ news, menu }) {
+export default function Post({ post, menu, otherNews }) {
+  console.log(otherNews);
   return (
     <Layout menu={menu}>
-      <div>
-        <h1>{news.title}</h1>
-        <article dangerouslySetInnerHTML={{ __html: news.content }}></article>
+      <div className="main bg-gray-50 pt-20 pb-10 px-2 mx-auto text-gray-700">
+        <div className="max-w-2xl mx-auto">
+          <div className="relative h-96">
+            <Image
+              src={post.featuredImage.node.sourceUrl}
+              layout="fill"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="flex items-center justify-between mt-5">
+            <h1 className="text-2xl inline-block">{post.title}</h1>
+            <h3 className="text-sm text-gray-600">
+              written by {post.featuredImage.node.author.node.name},{" "}
+              {post.date.slice(0, 10)}
+            </h3>
+          </div>
+          <article
+            className="text-gray-600 mt-3 leading-6"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          ></article>
+          <div className="flex items-center mt-5">
+            <Link href="/posts">
+              <a>
+                <button className="cta-btn text-white text-sm w-24 h-10">
+                  All news
+                </button>
+              </a>
+            </Link>
+            <i
+              aria-hidden
+              className="transition-all hover:text-gray-300 cursor-pointer text-gray-400 text-2xl fab fa-facebook-square ml-5"
+            ></i>
+            <i
+              aria-hidden
+              className="transition-all hover:text-gray-300 cursor-pointer ml-4 text-gray-400 text-2xl fab fa-instagram-square"
+            ></i>
+          </div>
+          <div className="mt-10">
+            <h1 className="font-playfair text-2xl font-bold border-b-4 border-yellow-400 leading-10">
+              Check out some of our other stories:
+            </h1>
+          </div>
+        </div>
       </div>
     </Layout>
   );
 }
 
 export const getStaticProps = async (context) => {
-  const res = await fetch(process.env.apiEndpoint, {
+  const postRequest = await fetch(process.env.apiEndpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -20,9 +65,16 @@ export const getStaticProps = async (context) => {
         singleNews(id: $id, idType: $idType) {
           title
           content
+          date
+          databaseId
           featuredImage {
             node {
               sourceUrl
+              author {
+                node {
+                  name
+                }
+              }
             }
           }
         }
@@ -58,14 +110,45 @@ export const getStaticProps = async (context) => {
     }),
   });
 
-  const news = await res.json();
+  const post = await postRequest.json();
+  const currentPostId = post.data.singleNews.databaseId;
   const menu = await menuRequest.json();
 
-  if (news.data) {
+  const otherNewsRequest = await fetch(process.env.apiEndpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `query OtherNews($notIn: [ID]) {
+        allNews(where: {notIn: $notIn}) {
+          edges {
+            node {
+              title
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
+              customExcerpt {
+                excerpt
+              }
+            }
+          }
+        }
+      }`,
+      variables: {
+        notIn: currentPostId,
+      },
+    }),
+  });
+
+  const otherNews = await otherNewsRequest.json();
+
+  if (post.data) {
     return {
       props: {
-        news: news.data.singleNews,
+        post: post.data.singleNews,
         menu: menu.data.category.posts.nodes,
+        otherNews: otherNews.data.allNews.edges,
       },
     };
   } else {
@@ -85,18 +168,20 @@ export const getStaticPaths = async () => {
         allNews {
           nodes {
             slug
+            databaseId
           }
         }
       }`,
     }),
   });
   const json = await res.json();
-  const news = json.data.allNews.nodes;
+  const post = json.data.allNews.nodes;
 
-  const paths = news.map((post) => {
+  const paths = post.map((post) => {
     return {
       params: {
         slug: post.slug,
+        databaseId: post.databaseId,
       },
     };
   });
