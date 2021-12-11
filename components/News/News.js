@@ -1,7 +1,6 @@
 import Preview from "./Preview";
 
 export default function News({ news }) {
-  console.log(news);
   return (
     <section id="news" className="pt-10 px-2 mx-auto bg-gray-50">
       <div className="text-gray-600 pt-6 sm:p-8 text-lg text-center">

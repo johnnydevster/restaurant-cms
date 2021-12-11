@@ -1,10 +1,13 @@
-export default function Post({ post }) {
-  console.log(post);
+import Layout from "../../components/Layout";
+
+export default function Post({ news, menu }) {
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <article dangerouslySetInnerHTML={{ __html: post.content }}></article>
-    </div>
+    <Layout menu={menu}>
+      <div>
+        <h1>{news.title}</h1>
+        <article dangerouslySetInnerHTML={{ __html: news.content }}></article>
+      </div>
+    </Layout>
   );
 }
 
@@ -13,11 +16,9 @@ export const getStaticProps = async (context) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      query: `
-      query SinglePost($id: ID!, $idType: PostIdType!) {
-        post(id: $id, idType: $idType) {
+      query: `query SinglePost($id: ID!, $idType: SingleNewsIdType!) {
+        singleNews(id: $id, idType: $idType) {
           title
-          slug
           content
           featuredImage {
             node {
@@ -32,12 +33,39 @@ export const getStaticProps = async (context) => {
       },
     }),
   });
-  const post = await res.json();
 
-  if (post.data) {
+  const menuRequest = await fetch(process.env.apiEndpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+      query HomePageQuery {
+        category(id: "Lunch Menu", idType: NAME) {
+          posts {
+            nodes {
+              title
+              excerpt
+              content
+              categories {
+                nodes {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }`,
+    }),
+  });
+
+  const news = await res.json();
+  const menu = await menuRequest.json();
+
+  if (news.data) {
     return {
       props: {
-        post: post.data.post,
+        news: news.data.singleNews,
+        menu: menu.data.category.posts.nodes,
       },
     };
   } else {
@@ -53,20 +81,19 @@ export const getStaticPaths = async () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `
-      query AllPostsQuery {
-        posts {
+      query NewsQuery {
+        allNews {
           nodes {
             slug
-            title
           }
         }
       }`,
     }),
   });
   const json = await res.json();
-  const posts = json.data.posts.nodes;
+  const news = json.data.allNews.nodes;
 
-  const paths = posts.map((post) => {
+  const paths = news.map((post) => {
     return {
       params: {
         slug: post.slug,

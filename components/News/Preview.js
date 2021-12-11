@@ -10,7 +10,6 @@ export default function Preview({ title, excerpt, image, date, author }) {
           className="object-cover sm:rounded-l-full"
         />
       </div>
-
       <div className="p-5">
         <div className="flex items-center justify-between text-sm">
           <h2 className="text-base sm:text-xl font-bold">{title}</h2>
