@@ -2,12 +2,9 @@ import Preview from "./Preview";
 
 export default function News({ news }) {
   return (
-    <section id="news" className="pt-10 px-2 mx-auto bg-gray-50">
-      <div className="text-gray-600 pt-6 sm:p-8 text-lg text-center">
-        <h1 className="text-gray-700 font-playfair font-black text-3xl sm:text-4xl mb-2 border-b-4 inline-block border-yellow-400">
-          News
-        </h1>
-        <div className="mt-10 previews max-w-3xl mx-auto">
+    <section id="news" className="px-2 mx-auto bg-gray-50 relative z-30">
+      <div className="text-gray-600 pt-6 sm:p-6 text-lg text-center">
+        <div className="previews max-w-sm sm:max-w-3xl mx-auto">
           {news.length > 0 &&
             news.map((newspost, i) => {
               return (

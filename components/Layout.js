@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { useContext } from "react";
 import React from "react";
 import { MenuContext } from "../components/context/MenuContext";
+import bodyBackground from "../public/body-background.jpg";
 
 export default function Layout({ menu, children }) {
   const { setShowMenu, setShowModal, showMenu, showModal } =
@@ -17,10 +18,10 @@ export default function Layout({ menu, children }) {
         <title>Deli Delights</title>
         <script
           src="https://kit.fontawesome.com/43989a61ac.js"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Playfair+Display:wght@200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
@@ -48,7 +49,7 @@ export default function Layout({ menu, children }) {
         <Footer />
 
         <div id="body-background" className="inset-0 fixed">
-          <Image src="/../public/body-background.jpg" layout="fill" />
+          <Image src={bodyBackground} layout="fill" />
         </div>
       </div>
     </>

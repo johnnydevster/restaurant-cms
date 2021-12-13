@@ -1,8 +1,9 @@
 module.exports = {
   env: {
-    apiEndpoint: "http://wptest.local/graphql",
+    apiEndpoint:
+      "https://delidelights-92b1c5.ingress-daribow.easywp.com/graphql",
   },
   images: {
-    domains: ["wptest.local"],
+    domains: ["wptest.local", "delidelights-92b1c5.ingress-daribow.easywp.com"],
   },
 };

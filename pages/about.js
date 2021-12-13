@@ -5,8 +5,13 @@ import News from "../components/News/News";
 export default function About({ menu, chefs, news }) {
   return (
     <Layout menu={menu}>
-      <div className="main">
+      <div className="main bg-gray-50">
         <Chefs chefs={chefs} />
+        <div className="flex mt-10">
+          <h1 className="text-gray-700 font-playfair font-black text-3xl sm:text-4xl mb-2 border-b-4 inline-block border-yellow-400 mx-auto">
+            News
+          </h1>
+        </div>
         <News news={news} />
       </div>
     </Layout>

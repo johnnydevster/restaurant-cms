@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import Head from "next/head";
+import introImage from "../public/article-image-1.jpg";
 
 export default function Intro() {
   return (
@@ -17,7 +19,7 @@ export default function Intro() {
         <div className="sm:flex items-center">
           <div className="h-80 sm:h-96 sm:w-3/5 relative shadow">
             <Image
-              src="/../public/article-image-1.jpg"
+              src={introImage}
               className="object-cover rounded "
               layout="fill"
               priority
@@ -40,9 +42,13 @@ export default function Intro() {
               evening - be it with friends, family, or a special someone.
             </p>
             <div className="mt-5 flex items-center">
-              <button className="cta-btn text-white w-34 h-11">
-                Read More
-              </button>
+              <Link href="/about">
+                <a>
+                  <button className="cta-btn text-white w-34 h-11">
+                    Read More
+                  </button>
+                </a>
+              </Link>
               <i
                 aria-hidden
                 className="transition-all hover:text-gray-300 cursor-pointer ml-10 text-gray-400 text-xl fab fa-facebook-square"

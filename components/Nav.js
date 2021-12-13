@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useOutsideAlerter } from "../utils/Hooks";
 import { useRef, useState } from "react";
+import logo from "../public/logo.png";
 
 export default function Nav({ setShowModal, setShowMenu }) {
   const [showNav, setShowNav] = useState(false);
@@ -21,7 +22,7 @@ export default function Nav({ setShowModal, setShowMenu }) {
   return (
     <>
       <nav className="tracking-widest justify-between items-center flex w-full fixed z-50 bg-gray-50 p-2 rounded-b">
-        <Image src="/../public/logo.png" width={50} height={50} />
+        <Image src={logo} width={50} height={50} />
 
         <ul className="hidden sm:flex font-semibold mx-auto w-60 justify-between items-center uppercase">
           <li>

@@ -5,6 +5,7 @@ import Testimonials from "../components/Testimonials/Testimonials";
 import Visit from "../components/Visit";
 import Favorites from "../components/Favorites/Favorites";
 import { MenuContext } from "../components/context/MenuContext";
+import headerImage from "../public/header-background.jpg";
 
 import { useContext } from "react";
 
@@ -80,7 +81,7 @@ export default function Home({ menu, favorites }) {
         </div>
 
         <Image
-          src="/../public/header-background.jpg"
+          src={headerImage}
           layout="fill"
           className="relative object-cover z-40 object-left transform scale-125 filter contrast-125"
         />

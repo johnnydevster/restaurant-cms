@@ -1,13 +1,16 @@
 import Layout from "../../components/Layout";
 import Image from "next/image";
+import Head from "next/head";
 import Link from "next/link";
-import Preview from "../../components/news/Preview";
+import Preview from "../../components/News/Preview";
 
 export default function Post({ post, menu, otherNews }) {
-  console.log(otherNews);
   return (
     <Layout menu={menu}>
-      <div className="main bg-gray-50 pt-20 pb-10 px-2 mx-auto text-gray-700">
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <div className="main bg-gray-50 pt-16 pb-10 px-2 mx-auto text-gray-700">
         <div className="max-w-2xl mx-auto">
           <div className="relative h-96">
             <Image
@@ -47,8 +50,22 @@ export default function Post({ post, menu, otherNews }) {
           </div>
           <div className="mt-10">
             <h1 className="font-playfair text-2xl font-bold border-b-4 border-yellow-400 leading-10">
-              Check out some of our other stories:
+              Check out our other stories:
             </h1>
+            {otherNews.length > 0 &&
+              otherNews.map((newspost, i) => {
+                return (
+                  <Preview
+                    key={`${i} ${newspost.title}`}
+                    title={newspost.node.title}
+                    excerpt={newspost.node.customExcerpt.excerpt}
+                    image={newspost.node.featuredImage.node.sourceUrl}
+                    author={newspost.node.featuredImage.node.author.node.name}
+                    date={newspost.node.date}
+                    slug={newspost.node.slug}
+                  />
+                );
+              })}
           </div>
         </div>
       </div>
@@ -119,13 +136,20 @@ export const getStaticProps = async (context) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `query OtherNews($notIn: [ID]) {
-        allNews(where: {notIn: $notIn}) {
+        allNews(where: {notIn: $notIn}, first: 4) {
           edges {
             node {
               title
+              date
+              slug
               featuredImage {
                 node {
                   sourceUrl
+                  author {
+                    node {
+                      name
+                    }
+                  }
                 }
               }
               customExcerpt {
@@ -168,7 +192,6 @@ export const getStaticPaths = async () => {
         allNews {
           nodes {
             slug
-            databaseId
           }
         }
       }`,
@@ -181,7 +204,6 @@ export const getStaticPaths = async () => {
     return {
       params: {
         slug: post.slug,
-        databaseId: post.databaseId,
       },
     };
   });
