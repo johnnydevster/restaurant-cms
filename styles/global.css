@@ -44,7 +44,8 @@
     font-size: 0.9rem;
   }
 
-  #menu {
+  #menu,
+  #reservation {
     z-index: 70;
   }
 

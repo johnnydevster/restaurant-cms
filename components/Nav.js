@@ -4,20 +4,32 @@ import { useOutsideAlerter } from "../utils/Hooks";
 import { useRef, useState } from "react";
 import logo from "../public/logo.png";
 
-export default function Nav({ setShowModal, setShowMenu }) {
-  const [showNav, setShowNav] = useState(false);
+export default function Nav({
+  setShowModal,
+  setShowMenu,
+  setShowReservationModal,
+}) {
+  const [showSidebar, setShowSidebar] = useState(false);
 
   const navRef = useRef(null);
-  useOutsideAlerter(navRef, () => setShowNav(false));
+  useOutsideAlerter(navRef, () => setShowSidebar(false));
 
   function handleMenu() {
     setShowModal(true);
     setShowMenu(true);
-    setShowNav(false);
+    setShowSidebar(false);
+    setShowReservationModal(false);
+  }
+
+  function handleReservationModal() {
+    setShowModal(true);
+    setShowReservationModal(true);
+    setShowSidebar(false);
+    setShowMenu(false);
   }
 
   function handleNav() {
-    setShowNav(!showNav);
+    setShowSidebar(!showSidebar);
   }
   return (
     <>
@@ -48,17 +60,22 @@ export default function Nav({ setShowModal, setShowMenu }) {
             Menu
           </li>
         </ul>
-        <button className="hidden sm:block cta-btn">Reservation</button>
+        <button
+          onClick={handleReservationModal}
+          className="hidden sm:block cta-btn"
+        >
+          Reservation
+        </button>
         <div className="sm:hidden relative w-10 h-10 z-10 top-1 mx-2">
           <div
             className={`w-full h-full absolute z-20 rounded cursor-pointer ${
-              showNav ? "block" : "hidden"
+              showSidebar ? "block" : "hidden"
             }`}
           ></div>
           <span
             onClick={handleNav}
             className={`absolute material-icons text-3xl px-1 ${
-              showNav ? "bg-gray-800" : "bg-gray-200"
+              showSidebar ? "bg-gray-800" : "bg-gray-200"
             } text-gray-500 rounded cursor-pointer select-none`}
           >
             menu
@@ -67,7 +84,7 @@ export default function Nav({ setShowModal, setShowMenu }) {
         <div
           ref={navRef}
           className={`bg-gray-800 absolute h-screen top-0 right-0 left-1/2 flex items-center transition-all transform ease-in-out duration-500 ${
-            showNav ? "" : "translate-x-full"
+            showSidebar ? "" : "translate-x-full"
           }`}
         >
           <ul className="ml-5 h-36 justify-between font-semibold text-2xl uppercase text-yellow-400 flex flex-col">

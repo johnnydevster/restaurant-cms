@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-export default function Footer() {
+export default function Footer({ scrollToTop }) {
   return (
     <>
       <Head>
@@ -31,7 +31,10 @@ export default function Footer() {
               Deli delights {`${new Date().getFullYear()}`}.<br />
               All Rights Reserved.
             </h4>
-            <div className=" text-yellow-400 flex items-center hover:text-yellow-300 cursor-pointer">
+            <div
+              onClick={scrollToTop}
+              className=" text-yellow-400 flex items-center hover:text-yellow-300 cursor-pointer"
+            >
               <h4>Back to top</h4>
               <span className="material-icons text-3xl">keyboard_arrow_up</span>
             </div>

@@ -10,7 +10,8 @@ import headerImage from "../public/header-background.jpg";
 import { useContext } from "react";
 
 export default function Home({ menu, favorites }) {
-  const { setShowMenu, setShowModal } = useContext(MenuContext);
+  const { setShowMenu, setShowModal, setShowReservationModal } =
+    useContext(MenuContext);
 
   function handleMenu() {
     setShowMenu(true);
