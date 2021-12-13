@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useOutsideAlerter } from "../utils/Hooks";
+import TextField from "@mui/material/TextField";
 
 export default function ReservationModal({
   setShowModal,
@@ -23,6 +24,13 @@ export default function ReservationModal({
           Make a reservation
         </h1>
       </div>
+      <form className="my-5">
+        <div className="relative mt-10">
+          <input type="text" className="inputText" placeholder=" " required />
+          <span className="floating-label">Full name</span>
+          <TextField label="Full name" />
+        </div>
+      </form>
     </div>
   );
 }

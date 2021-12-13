@@ -70,6 +70,46 @@
   .main {
     @apply max-w-5xl mx-auto relative z-10;
   }
+
+  input:focus {
+    outline: 2px solid rgba(230, 230, 230);
+  }
+
+  input:placeholder-shown ~ .floating-label {
+    top: 6px;
+    bottom: 10px;
+    left: 10px;
+    font-size: 16px;
+    opacity: 1;
+  }
+
+  input:not(:placeholder-shown) ~ .floating-label {
+    color: gray;
+    position: absolute;
+    pointer-events: none;
+    font-size: 14px;
+    left: 0px;
+    top: -20px;
+    transition: 0.2s ease all;
+    padding: 0 4px;
+  }
+
+  .inputText {
+    font-size: 1rem;
+    padding: 0 6px;
+    width: 15rem;
+    height: 35px;
+  }
+
+  .floating-label {
+    color: gray;
+    position: absolute;
+    pointer-events: none;
+    font-size: 14px;
+    left: 10px;
+    top: -12px;
+    transition: 0.2s ease all;
+  }
 }
 
 @media screen and (min-width: 640px) {
