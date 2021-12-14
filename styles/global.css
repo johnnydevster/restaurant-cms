@@ -84,7 +84,6 @@
   }
 
   input:not(:placeholder-shown) ~ .floating-label {
-    color: gray;
     position: absolute;
     pointer-events: none;
     font-size: 14px;
@@ -97,12 +96,10 @@
   .inputText {
     font-size: 1rem;
     padding: 0 6px;
-    width: 15rem;
     height: 35px;
   }
 
   .floating-label {
-    color: gray;
     position: absolute;
     pointer-events: none;
     font-size: 14px;
