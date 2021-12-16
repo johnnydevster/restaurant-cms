@@ -3,6 +3,115 @@ import { useOutsideAlerter } from "../utils/Hooks";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import DateTimePicker from "@mui/lab/DateTimePicker";
+import Input from "@mui/material/Input";
+
+import { ClickAwayListener } from "@mui/material/ClickAwayListener";
+
+export default function ReservationModal({
+  showReservationModal,
+  setShowReservationModal,
+}) {
+  const [date, setDate] = useState(new Date());
+  const [numberOfGuests, setNumberOfGuests] = useState(1);
+
+  const handleClose = () => {
+    setShowReservationModal(false);
+  };
+  return (
+    <>
+      <Dialog
+        fullWidth={true}
+        open={showReservationModal}
+        onClose={handleClose}
+        className=""
+      >
+        <DialogTitle>Make a reservation</DialogTitle>
+        <DialogContent>
+          <div className="flex">
+            <TextField
+              className="w-2/5 flex-shrink-0"
+              margin="dense"
+              id="name"
+              label="Name"
+              type="text"
+              variant="standard"
+            />
+            <TextField
+              className="ml-2 w-full"
+              margin="dense"
+              id="email"
+              label="Email Address"
+              type="email"
+              variant="standard"
+            />
+          </div>
+
+          <div className="flex items-end mt-5">
+            <div className="w-2/5 flex-shrink-0">
+              <InputLabel id="demo-simple-select-label">
+                No. of guests
+              </InputLabel>
+              <Select
+                className="w-full"
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={numberOfGuests}
+                label="Number of guests"
+                onChange={(e) => setNumberOfGuests(e.target.value)}
+                variant="standard"
+              >
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+                <MenuItem value={5}>5</MenuItem>
+                <MenuItem value={6}>6</MenuItem>
+              </Select>
+            </div>
+            <div className="w-full">
+              <DateTimePicker
+                className=""
+                renderInput={(props) => (
+                  <TextField
+                    className="ml-3 pr-3 w-full"
+                    variant="standard"
+                    {...props}
+                  >
+                    <Input color="red" />
+                  </TextField>
+                )}
+                label="Date"
+                value={date}
+                variant="standard"
+                onChange={(newValue) => {
+                  setDate(newValue);
+                }}
+              />
+            </div>
+          </div>
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Reserve</Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+}
+
+/*
 export default function ReservationModal({
   setShowModal,
   setShowReservationModal,
@@ -90,3 +199,5 @@ export default function ReservationModal({
     </div>
   );
 }
+
+*/

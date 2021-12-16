@@ -54,12 +54,12 @@ export default function Layout({ menu, children }) {
             menu={menu}
           />
         )}
-        {showReservationModal && (
-          <ReservationModal
-            setShowReservationModal={setShowReservationModal}
-            setShowModal={setShowModal}
-          />
-        )}
+
+        <ReservationModal
+          showReservationModal={showReservationModal}
+          setShowReservationModal={setShowReservationModal}
+          setShowModal={setShowModal}
+        />
 
         {showModal && (
           <div className="absolute inset-0 modal bg-black opacity-70"></div>

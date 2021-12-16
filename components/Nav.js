@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useOutsideAlerter } from "../utils/Hooks";
 import { useRef, useState } from "react";
 import logo from "../public/logo.png";
+import DateTimePicker from "react-datepicker";
 
 export default function Nav({
   setShowModal,
@@ -22,7 +23,6 @@ export default function Nav({
   }
 
   function handleReservationModal() {
-    setShowModal(true);
     setShowReservationModal(true);
     setShowSidebar(false);
     setShowMenu(false);
@@ -87,7 +87,7 @@ export default function Nav({
             showSidebar ? "" : "translate-x-full"
           }`}
         >
-          <ul className="ml-5 h-36 justify-between font-semibold text-2xl uppercase text-yellow-400 flex flex-col">
+          <ul className="ml-5 h-48 justify-between font-semibold text-2xl uppercase text-yellow-400 flex flex-col">
             <li>
               <Link href="/">
                 <a className="hover:text-yellow-300 transition-all ease-in-out cursor-pointer">
@@ -108,6 +108,12 @@ export default function Nav({
             >
               Menu
             </li>
+            <button
+              onClick={handleReservationModal}
+              className="cta-btn text-gray-800 text-base w-36"
+            >
+              Reservation
+            </button>
           </ul>
         </div>
       </nav>
