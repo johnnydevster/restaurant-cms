@@ -30,10 +30,10 @@ Also, the dynamic routing seems to be built with CMS systems in mind, so this wa
 * 'Meet our chefs' section on the 'about' page
 * News announcements
 
-#### Custom responsive slider
+#### Custom responsive slideshow component
 
 * Uses `overflow: hidden` and `transform: translate` to pan elements left and right
-* Switches from three elements to one on smaller screens
+* Switches from three elements to one element on smaller screens
 
 ##### Showcase
 
