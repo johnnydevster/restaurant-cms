@@ -131,6 +131,7 @@ export const getStaticProps = async (context) => {
   const currentPostId = post.data.singleNews.databaseId;
   const menu = await menuRequest.json();
 
+  // Query to get 'other news'
   const otherNewsRequest = await fetch(process.env.apiEndpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -174,6 +175,7 @@ export const getStaticProps = async (context) => {
         menu: menu.data.category.posts.nodes,
         otherNews: otherNews.data.allNews.edges,
       },
+      revalidate: 10,
     };
   } else {
     return {

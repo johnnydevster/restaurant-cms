@@ -34,8 +34,11 @@ export default function Nav({
   return (
     <>
       <nav className="tracking-widest justify-between items-center flex w-full fixed z-50 bg-gray-50 p-2 rounded-b">
-        <Image src={logo} width={50} height={50} />
-
+        <Link href="/">
+          <a>
+            <Image src={logo} width={50} height={50} />
+          </a>
+        </Link>
         <ul className="hidden sm:flex font-semibold mx-auto w-60 justify-between items-center uppercase">
           <li>
             <Link href="/">
@@ -81,6 +84,8 @@ export default function Nav({
             menu
           </span>
         </div>
+
+        {/* Mobile friendly version of navigation menu */}
         <div
           ref={navRef}
           className={`bg-gray-800 absolute h-screen top-0 right-0 left-1/2 flex items-center transition-all transform ease-in-out duration-500 ${
@@ -116,6 +121,7 @@ export default function Nav({
             </button>
           </ul>
         </div>
+        {/* / Mobile friendly nav menu */}
       </nav>
       <div className="rounded shadow top-12 left-2 right-2 h-6 opacity-30 fixed z-40 bg-gray-400"></div>
     </>

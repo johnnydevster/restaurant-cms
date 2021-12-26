@@ -19,6 +19,7 @@ export default function Home({ menu, favorites }) {
   }
   return (
     <Layout menu={menu}>
+      {/* This whooole chunk of HTML is the main hero div on the front page */}
       <div className="hero relative z-30 h-screen w-full bg-gray-900">
         <div className="mt-16 flex flex-col justify-center absolute inset-0 z-50 text-gray-50">
           <div className="p-2 sm:p-10 table-cell text-center h-1/4 sm:h-auto sm:text-left">
@@ -87,6 +88,8 @@ export default function Home({ menu, favorites }) {
           className="relative object-cover z-40 object-left transform scale-125 filter contrast-125"
         />
       </div>
+      {/* End of main hero section :) */}
+
       <div className="main">
         <Intro />
         <Visit />
@@ -98,6 +101,9 @@ export default function Home({ menu, favorites }) {
 }
 
 export const getStaticProps = async (context) => {
+  // Note for future projects:
+  //
+  // Keep common queries in a separate file so that they don't have to be repeated for every static page...
   const menuRequest = await fetch(process.env.apiEndpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

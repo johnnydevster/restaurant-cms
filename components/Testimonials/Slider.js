@@ -4,9 +4,11 @@ import { useWindowDimensions } from "../../utils/Hooks";
 import { useSwipeable } from "react-swipeable";
 
 export default function Slider({ elements }) {
-  // Slider component
+  // Mobile friendly slider component
   //
   // Takes an array of objects as props, and uses CSS translate to slide between elements.
+  // On larger screens, show three elements at a time,
+  // on smaller screens only show one element.
 
   const handlers = useSwipeable({
     onSwipedLeft: (eventData) => handleRightArrow(),
@@ -23,17 +25,23 @@ export default function Slider({ elements }) {
   // The amount of CSS translate (plus or minus) that should be used to move the elements left or right.
 
   const [translateFactor, setTranslateFactor] = useState();
-  // The translate factor used, changes when window width goes below a certain threshold.
+  // The translate factor is used to calculate how much the elements in the slider should be translated left or right when
+  // a user scrolls using the arrow buttons or the index "blobs".
+
+  // For example: on larger screens three elements are shown, which means that the translateFactor is 1/3, or 33.33.
+  // On smaller screens, only a single element is shown, which means that the translateFactor should be 1.
 
   const { width: windowWidth } = useWindowDimensions();
 
   function handleRightArrow() {
+    // User clicks the right arrow or swipes left on mobile.
+
     // Calculate new value of 'sliderTranslate' to move the elements left.
-    // If you're at the last element, move to the first instead.
+
     if (sliderIndex === elements.length - 1) {
+      // If you're at the last element, move to the first element instead.
       setSliderIndex(0);
-      const translateIndex = middleElement;
-      setSliderTranslate(translateIndex * translateFactor);
+      setSliderTranslate(middleElement * translateFactor);
     } else {
       setSliderIndex(sliderIndex + 1);
       setSliderTranslate(sliderTranslate - translateFactor);
@@ -41,9 +49,12 @@ export default function Slider({ elements }) {
   }
 
   function handleLeftArrow() {
+    // User clicks the left arrow or swipes right on mobile.
+
     // Calculate new value of 'sliderTranslate' to move the elements right.
-    // If you're at the first element, move to the last instead.
+
     if (sliderIndex === 0) {
+      // If you're at the first element, move to the last instead.
       setSliderIndex(elements.length - 1);
       const translateIndex = elements.length - 1 - middleElement;
       setSliderTranslate(translateIndex * -translateFactor);

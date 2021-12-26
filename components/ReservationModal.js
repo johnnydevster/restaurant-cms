@@ -1,6 +1,4 @@
-import { useRef, useState } from "react";
-import { useOutsideAlerter } from "../utils/Hooks";
-import DatePicker from "react-datepicker";
+import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 
 import Button from "@mui/material/Button";
@@ -8,15 +6,12 @@ import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 import Input from "@mui/material/Input";
-
-import { ClickAwayListener } from "@mui/material/ClickAwayListener";
 
 export default function ReservationModal({
   showReservationModal,
