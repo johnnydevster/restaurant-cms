@@ -11,19 +11,33 @@
 * Learn more about **GraphQL-queries**
 * Learn how to use **Dynamic Routes** using slugs fetched through queries
 
-#### :grey_question: Why headless WordPress?
+#### :question: Why headless WordPress?
 The reasoning behind using WordPress as a headless CMS was that I wanted the hypothetical client (i.e the store owner / administrator) to easily be able to add / edit content on the site through WordPress' admin panel, while me as the developer can still retain full control over the front end presentation.
 
 Also, because I still need to practice my CSS chops and didn't want to cheat with a WYSIWYG editor. :eyes:
 
-## How to use
+#### :question: Why Next.js?
+I've used React for quite some time, but have come to realize that base React apps don't play well with search engines since they're pure JavaScript instead of pre rendered.
+Also, the dynamic routing seems to be built with CMS systems in mind, so this was a golden opportunity to strike two birds with one stone.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+### Features of this project
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+#### The following content is easily editable by the restaurant staff through the WordPress admin panel:
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+* Modal lunch menu contents
+* 'Our favorites' section on the main page
+* Testimonials slider contents
+* 'Meet our chefs' section on the 'about' page
+* News announcements
+
+#### Custom responsive slider
+
+* Uses `overflow: hidden` and `transform: translate` to pan elements left and right
+* Switches from three elements to one on smaller screens
+
+##### Showcase
+
+<img src="https://github.com/johnnydevster/readme_gifs/blob/main/delidelights/3%20-%20Custom%20Slider.gif" alt="custom slider component">
+
+#### Custom responsive slider
+
