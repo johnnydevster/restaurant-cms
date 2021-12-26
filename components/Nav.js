@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useOutsideAlerter } from "../utils/Hooks";
 import { useRef, useState } from "react";
 import logo from "../public/logo.png";
-import DateTimePicker from "react-datepicker";
 
 export default function Nav({
   setShowModal,
