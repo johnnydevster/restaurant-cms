@@ -175,7 +175,7 @@ export const getStaticProps = async (context) => {
         menu: menu.data.category.posts.nodes,
         otherNews: otherNews.data.allNews.edges,
       },
-      revalidate: 10,
+      revalidate: 60,
     };
   } else {
     return {

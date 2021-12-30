@@ -79,5 +79,6 @@ export const getStaticProps = async () => {
       news: news.data.allNews.nodes,
       menu: menu.data.category.posts.nodes,
     },
+    revalidate: 60,
   };
 };

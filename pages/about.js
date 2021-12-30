@@ -107,6 +107,6 @@ export const getStaticProps = async (context) => {
       chefs: chefs.data.chefs.nodes,
       news: news.data.allNews.nodes,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 };
