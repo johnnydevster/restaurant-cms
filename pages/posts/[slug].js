@@ -214,4 +214,5 @@ export const getStaticPaths = async () => {
     paths,
     fallback: true,
   };
+  // Build failed because of removing news post?
 };
