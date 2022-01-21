@@ -8,28 +8,30 @@ export default function Post({ post, menu, otherNews }) {
   return (
     <Layout menu={menu}>
       <Head>
-        <title>{post.title}</title>
+        <title>{post?.title || null}</title>
       </Head>
       <div className="main bg-gray-50 pt-16 pb-10 px-2 mx-auto text-gray-700">
         <div className="max-w-2xl mx-auto">
           <div className="relative h-96">
-            <Image
-              src={post.featuredImage.node.sourceUrl}
-              layout="fill"
-              className="object-cover"
-              priority
-            />
+            {post && (
+              <Image
+                src={post?.featuredImage.node.sourceUrl || null}
+                layout="fill"
+                className="object-cover"
+                priority
+              />
+            )}
           </div>
           <div className="flex items-center justify-between mt-5">
-            <h1 className="text-2xl inline-block">{post.title}</h1>
+            <h1 className="text-2xl inline-block">{post?.title || null}</h1>
             <h3 className="text-sm text-gray-600">
-              written by {post.featuredImage.node.author.node.name},{" "}
-              {post.date.slice(0, 10)}
+              written by {post?.featuredImage.node.author.node.name || null},{" "}
+              {post?.date.slice(0, 10) || null}
             </h3>
           </div>
           <article
             className="text-gray-600 mt-3 leading-6"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: post?.content || null }}
           ></article>
           <div className="flex items-center mt-5">
             <Link href="/posts">
@@ -52,8 +54,8 @@ export default function Post({ post, menu, otherNews }) {
             <h1 className="font-playfair text-2xl font-bold border-b-4 border-yellow-400 leading-10">
               Check out our other stories:
             </h1>
-            {otherNews.length > 0 &&
-              otherNews.map((newspost, i) => {
+            {otherNews?.length > 0 &&
+              otherNews?.map((newspost, i) => {
                 return (
                   <Preview
                     key={`${i} ${newspost.title}`}

@@ -18,7 +18,7 @@ export default function Visit() {
               loading="lazy"
               height="400px"
               style={{ border: 0 }}
-              src="https://www.google.com/maps/embed/v1/view?key=AIzaSyB7A0sTd3m_9A-mrNCKet_663Ahd_cb8iU
+              src="https://www.google.com/maps/embed/v1/view?key=AIzaSyB5E_12J949Q5ZleGa91Hl_S3_fnwQpEDM
     &&center=62.3891772696306, 17.30933183099287&zoom=15"
             ></iframe>
           </div>
